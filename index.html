@@ -114,6 +114,20 @@
             text-decoration: underline;
             background: #e9d8fd;
         }
+        /* 新增：长按复制按钮样式 */
+        .copy-btn {
+            color: #8a6dca;
+            background: #f3e9ff;
+            padding: 4px 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .copy-btn:hover {
+            background: #e9d8fd;
+        }
         .nav-section {
             margin-top: 32px;
             padding-top: 24px;
@@ -150,7 +164,7 @@
                 flex-direction: column; /* 手机端垂直排列 */
                 align-items: flex-start;
             }
-            .item-link {
+            .item-link, .copy-btn {
                 width: 100%;
                 text-align: center;
             }
@@ -202,9 +216,10 @@
                 <span class="item-name">📱 免费安卓魔法软件</span>
                 <a href="https://www.notion.so/2f032dddefa380b5a82cee05e676acdf?source=copy_link" target="_blank" class="item-link">点击访问</a>
             </div>
+            <!-- 红框对应的条目：替换链接+改成“长按复制”按钮 -->
             <div class="list-item">
                 <span class="item-name">🔗 万人骑永久订阅链接</span>
-                <a href="https://gist.githubusercontent.com/l406426025-cmd/bbbb3efb0bd1ed85a72b87f3bce95c49/raw/be2aa6677ccad818a406d93dc348313de5fa7464/karing-nodes.txt">点击访问</a>
+                <button class="copy-btn" onclick="copyLink(this, 'https://gist.githubusercontent.com/l406426025-cmd/bbbb3efb0bd1ed85a72b87f3bce95c49/raw/be2aa6677ccad818a406d93dc348313de5fa7464/karing-nodes.txt')">长按复制</button>
             </div>
             <div class="list-item">
                 <span class="item-name">📥 代理软件下载</span>
@@ -245,5 +260,27 @@
             <a href="https://link3.cc/jbksle" target="_blank" class="nav-link">点击访问</a>
         </div>
     </div>
+
+    <!-- 新增：复制链接的JS代码 -->
+    <script>
+        function copyLink(btn, link) {
+            // 复制链接到剪贴板
+            navigator.clipboard.writeText(link).then(() => {
+                // 复制成功后提示
+                const originalText = btn.textContent;
+                btn.textContent = "已复制";
+                // 2秒后恢复原文字
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                btn.textContent = "复制失败";
+                setTimeout(() => {
+                    btn.textContent = "长按复制";
+                }, 2000);
+            });
+        }
+    </script>
 </body>
 </html>
