@@ -34,15 +34,6 @@
             border: 3px solid #fff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        /* 新增：顶部装饰图 */
-        .header-img {
-            width: 100%;
-            max-height: 200px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
         .title {
             font-size: 28px;
             font-weight: 700;
@@ -163,18 +154,13 @@
                 width: 100%;
                 text-align: center;
             }
-            .header-img {
-                max-height: 150px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <!-- 新增：顶部装饰图（美观且不遮挡核心内容） -->
-            <img src="https://i2.qyimage.store:2999/i/5278cba395674f93" alt="装饰图" class="header-img">
-            <!-- 替换后的头像 -->
+            <!-- 仅保留替换后的头像，删除装饰图 -->
             <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="头像" class="avatar">
             <h1 class="title">姬不可失的资源列表</h1>
             <p class="subtitle">资源聚合·魔法分享·永久仓库 | 持续更新</p>
