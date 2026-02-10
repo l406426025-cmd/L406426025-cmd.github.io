@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姬不可失的资源列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #6f42c1; /* 全局紫色系文字 */
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 15px; /* 手机端缩小内边距 */
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        /* 新增：顶部装饰图 */
+        .header-img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #6f42c1;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #8a6dca; /* 浅紫色副标题 */
+        }
+        .divider {
+            width: 60px;
+            height: 3px;
+            background-color: #6f42c1;
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 24px 15px; /* 手机端适配内边距 */
+            margin-bottom: 24px;
+        }
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #6f42c1; /* 紫色标题 */
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 14px;
+            color: #8a6dca; /* 浅紫色日期标签 */
+            margin-bottom: 16px;
+            justify-content: center;
+            flex-wrap: wrap; /* 手机端换行 */
+        }
+        .meta-tag {
+            background-color: #f3e9ff; /* 浅紫背景标签 */
+            color: #6f42c1;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .list-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f3e9ff; /* 紫色系分隔线 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* 手机端换行 */
+            gap: 8px; /* 换行后间距 */
+        }
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        .item-name {
+            font-weight: 500;
+            color: #6f42c1; /* 左侧文字紫色 */
+            display: flex;
+            align-items: center;
+            gap: 8px; /* 表情和文字间距 */
+        }
+        .item-link {
+            color: #8a6dca; /* 浅紫色链接 */
+            text-decoration: none;
+            font-size: 14px;
+            background: #f3e9ff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap; /* 链接不换行 */
+        }
+        .item-link:hover {
+            text-decoration: underline;
+            background: #e9d8fd;
+        }
+        .nav-section {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #f3e9ff; /* 紫色系分隔线 */
+            text-align: center;
+        }
+        .nav-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #6f42c1; /* 紫色标题 */
+            margin-bottom: 12px;
+        }
+        .nav-link {
+            color: #6f42c1; /* 紫色链接 */
+            text-decoration: none;
+            background: #f3e9ff;
+            padding: 6px 15px;
+            border-radius: 6px;
+            display: inline-block; /* 适配点击区域 */
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+            background: #e9d8fd;
+        }
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 24px;
+            }
+            .card-title {
+                font-size: 20px;
+            }
+            .list-item {
+                flex-direction: column; /* 手机端垂直排列 */
+                align-items: flex-start;
+            }
+            .item-link {
+                width: 100%;
+                text-align: center;
+            }
+            .header-img {
+                max-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- 新增：顶部装饰图（美观且不遮挡核心内容） -->
+            <img src="https://i2.qyimage.store:2999/i/5278cba395674f93" alt="装饰图" class="header-img">
+            <!-- 替换后的头像 -->
+            <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="头像" class="avatar">
+            <h1 class="title">姬不可失的资源列表</h1>
+            <p class="subtitle">资源聚合·魔法分享·永久仓库 | 持续更新</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">🛠️ 项目列表</h2>
+            <div class="meta">
+                <span>2026-02-11</span>
+                <span class="meta-tag">实用技巧</span>
+            </div>
+
+            <div class="list-item">
+                <span class="item-name">👥 粉丝群（禁广告）</span>
+                <a href="https://pd.qq.com/s/5a6zmg4o" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">💰 副业项目群</span>
+                <a href="https://qm.qq.com/q/pfJhtpKmAM" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">🎓 魔法学院</span>
+                <a href="https://qm.qq.com/q/vuF9RoClB8" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">📚 网站资源库</span>
+                <a href="https://tcnc02rqvgh6.feishu.cn/wiki/Q92HwZKpai2Y0okTZOWcSZM5nIe" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">💾 破解软件总库（迅雷）</span>
+                <a href="https://pan.xunlei.com/s/VOdsgNa0py4apaXyR_2MMD9nA1?pwd=z6ar" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">📦 破解软件库（夸克）</span>
+                <a href="https://pan.quark.cn/s/3443992d78c8" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">📱 免费安卓魔法软件</span>
+                <a href="https://www.notion.so/2f032dddefa380b5a82cee05e676acdf?source=copy_link" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">🔗 万人骑永久订阅链接</span>
+                <a href="https://gist.githubusercontent.com/1406426025-cmd/bbbb3efb0bd1ed85a72b87f3bce95c49/raw/be2aa6677ccad818a406d93dc348313de5fa7464" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">📥 代理软件下载</span>
+                <a href="https://pan.quark.cn/s/d984f63d7176" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">✈️ 自用低价机场</span>
+                <a href="https://www.notion.so/2f032dddefa380a39241f1c22401060c?source=copy_link" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">📖 新手魔法教程</span>
+                <a href="https://www.notion.so/2f232dddefa380ffabdeb62d5e61185?source=copy_link" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">🍎 iOS小火箭教程</span>
+                <a href="https://www.notion.so/iOS-ID-2f032dddefa3809cbd1acb44b18737af?source=copy_link" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">🎬 网盘搜剧</span>
+                <a href="http://aa.plool.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">📺 短剧搜索</span>
+                <a href="http://yy.dbpan.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">🍉 吃瓜网站合集</span>
+                <a href="https://pan.quark.cn/s/96d3e2a89a09" target="_blank" class="item-link">点击访问</a>
+            </div>
+            <div class="list-item">
+                <span class="item-name">📢 TG频道</span>
+                <a href="https://t.me/jbksjl" target="_blank" class="item-link">点击访问</a>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <h3 class="nav-title">🔗 国内免翻导航页</h3>
+            <a href="https://link3.cc/jbksle" target="_blank" class="nav-link">点击访问</a>
+        </div>
+    </div>
+</body>
+</html>
