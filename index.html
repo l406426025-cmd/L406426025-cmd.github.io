@@ -12,58 +12,83 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f8f9fa;
+            background: linear-gradient(120deg, #f9f4fc 0%, #ffffff 100%); /* 淡紫渐变背景 */
             color: #6f42c1; /* 全局紫色系文字 */
             line-height: 1.6;
+            padding: 20px 0;
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px 15px; /* 手机端缩小内边距 */
+            padding: 0 15px;
         }
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            padding: 0 15px;
         }
         .avatar {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 16px;
-            border: 3px solid #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.15);
         }
         .title {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 700;
             color: #6f42c1;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
         .subtitle {
             font-size: 16px;
             color: #8a6dca; /* 浅紫色副标题 */
+            line-height: 1.5;
         }
         .divider {
-            width: 60px;
+            width: 80px;
             height: 3px;
-            background-color: #6f42c1;
-            margin: 20px auto 0;
+            background: linear-gradient(90deg, #6f42c1, #8a6dca);
+            margin: 25px auto 0;
             border-radius: 2px;
         }
-        .card {
+        /* 板块卡片样式 - 优化视觉层次 */
+        .section-card {
             background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            padding: 24px 15px; /* 手机端适配内边距 */
-            margin-bottom: 24px;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(111, 66, 193, 0.08);
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
         }
-        .card-title {
-            font-size: 22px;
+        /* 板块顶部装饰条 */
+        .section-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6f42c1, #8a6dca);
+        }
+        .section-title {
+            font-size: 24px;
             font-weight: 600;
             color: #6f42c1; /* 紫色标题 */
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .section-title i {
+            font-style: normal;
+            font-size: 26px;
         }
         .meta {
             display: flex;
@@ -71,28 +96,37 @@
             gap: 16px;
             font-size: 14px;
             color: #8a6dca; /* 浅紫色日期标签 */
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             justify-content: center;
             flex-wrap: wrap; /* 手机端换行 */
         }
         .meta-tag {
             background-color: #f3e9ff; /* 浅紫背景标签 */
             color: #6f42c1;
-            padding: 2px 8px;
-            border-radius: 4px;
+            padding: 4px 12px;
+            border-radius: 20px;
             font-size: 12px;
+            font-weight: 500;
+        }
+        /* 列表项样式优化 */
+        .list-wrapper {
+            display: grid;
+            gap: 12px;
         }
         .list-item {
-            padding: 12px 0;
-            border-bottom: 1px solid #f3e9ff; /* 紫色系分隔线 */
+            padding: 15px 12px;
+            background: #faf5ff; /* 淡紫背景 */
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap; /* 手机端换行 */
-            gap: 8px; /* 换行后间距 */
+            gap: 10px; /* 换行后间距 */
+            transition: all 0.3s ease;
         }
-        .list-item:last-child {
-            border-bottom: none;
+        .list-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.1);
         }
         .item-name {
             font-weight: 500;
@@ -100,79 +134,94 @@
             display: flex;
             align-items: center;
             gap: 8px; /* 表情和文字间距 */
+            font-size: 15px;
         }
-        .item-link {
-            color: #8a6dca; /* 浅紫色链接 */
+        /* 按钮/链接样式统一优化 */
+        .item-link, .copy-btn {
+            color: #fff;
+            background: linear-gradient(90deg, #6f42c1, #8a6dca);
             text-decoration: none;
             font-size: 14px;
-            background: #f3e9ff;
-            padding: 4px 10px;
-            border-radius: 4px;
+            padding: 6px 16px;
+            border-radius: 6px;
             white-space: nowrap; /* 链接不换行 */
-        }
-        .item-link:hover {
-            text-decoration: underline;
-            background: #e9d8fd;
-        }
-        /* 复制按钮样式 */
-        .copy-btn {
-            color: #8a6dca;
-            background: #f3e9ff;
-            padding: 4px 10px;
             border: none;
-            border-radius: 4px;
-            font-size: 14px;
             cursor: pointer;
-            white-space: nowrap;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-        .copy-btn:hover {
-            background: #e9d8fd;
+        .item-link:hover, .copy-btn:hover {
+            background: linear-gradient(90deg, #5d35a8, #7859b8);
+            transform: translateY(-1px);
         }
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* 底部导航区样式优化 */
         .nav-section {
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid #f3e9ff; /* 紫色系分隔线 */
+            margin-top: 10px;
+            padding: 25px 20px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(111, 66, 193, 0.08);
             text-align: center;
         }
         .nav-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
             color: #6f42c1; /* 紫色标题 */
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         .nav-link {
-            color: #6f42c1; /* 紫色链接 */
+            color: #fff;
+            background: linear-gradient(90deg, #6f42c1, #8a6dca);
             text-decoration: none;
-            background: #f3e9ff;
-            padding: 6px 15px;
-            border-radius: 6px;
+            padding: 8px 20px;
+            border-radius: 8px;
             display: inline-block; /* 适配点击区域 */
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         .nav-link:hover {
-            text-decoration: underline;
-            background: #e9d8fd;
+            background: linear-gradient(90deg, #5d35a8, #7859b8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.15);
         }
-        /* 手机端适配 */
+        /* 手机端适配 - 更友好的布局 */
         @media (max-width: 768px) {
             .title {
-                font-size: 24px;
+                font-size: 26px;
             }
-            .card-title {
-                font-size: 20px;
+            .section-title {
+                font-size: 22px;
             }
             .list-item {
                 flex-direction: column; /* 手机端垂直排列 */
-                align-items: flex-start;
+                align-items: stretch;
             }
             .item-link, .copy-btn {
                 width: 100%;
                 text-align: center;
+                padding: 8px 0;
+            }
+            .item-name {
+                font-size: 14px;
+            }
+            .section-card {
+                padding: 25px 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- 头部区域 -->
         <div class="header">
             <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="头像" class="avatar">
             <h1 class="title">姬不可失的资源列表</h1>
@@ -180,98 +229,122 @@
             <div class="divider"></div>
         </div>
 
-        <div class="card">
-            <h2 class="card-title">🛠️ 项目列表</h2>
+        <!-- 第一个板块：粉丝社区 -->
+        <div class="section-card">
+            <h2 class="section-title"><i>👥</i> 粉丝社区</h2>
             <div class="meta">
-                <span>2026-02-11</span>
-                <span class="meta-tag">实用技巧</span>
+                <span>2026-02-15</span>
+                <span class="meta-tag">交流互动</span>
             </div>
-
-            <div class="list-item">
-                <span class="item-name">👥 粉丝群（禁广告）</span>
-                <a href="https://pd.qq.com/s/5a6zmg4o" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">💰 副业项目群</span>
-                <a href="https://qm.qq.com/q/pfJhtpKmAM" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">🎓 魔法学院</span>
-                <a href="https://qm.qq.com/q/vuF9RoClB8" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">📚 网站资源库</span>
-                <a href="https://tcnc02rqvgh6.feishu.cn/wiki/Q92HwZKpai2Y0okTZOWcSZM5nIe" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">💾 破解软件总库（迅雷）</span>
-                <a href="https://pan.xunlei.com/s/VOdsgNa0py4apaXyR_2MMD9nA1?pwd=z6ar" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">📦 破解软件总库（夸克）</span>
-                <a href="https://pan.quark.cn/s/3443992d78c8" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">📱 免费安卓魔法软件</span>
-                <a href="https://www.notion.so/2f032dddefa380b5a82cee05e676acdf?source=copy_link" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <!-- 红框条目：已改为“点击复制” -->
-            <div class="list-item">
-                <span class="item-name">🔗 万人骑永久订阅链接</span>
-                <button class="copy-btn" onclick="copyLink(this, 'https://gist.githubusercontent.com/l406426025-cmd/bbbb3efb0bd1ed85a72b87f3bce95c49/raw/karing-nodes.txt')">点击复制</button>
-            </div>
-            <div class="list-item">
-                <span class="item-name">📥 代理软件下载</span>
-                <a href="https://pan.quark.cn/s/d984f63d7176" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">✈️ 自用低价机场</span>
-                <a href="https://www.notion.so/2f032dddefa380a39241f1c22401060c?source=copy_link" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <!-- 核心修改：替换新手魔法教程的链接 -->
-            <div class="list-item">
-                <span class="item-name">📖 新手魔法教程</span>
-                <a href="https://www.notion.so/30332dddefa3803289aaeb67976d7d88?source=copy_link" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">🍎 iOS小火箭账号及教程</span>
-                <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fxiaoji.github.io%2F" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">🎬 网盘搜剧</span>
-                <a href="http://aa.plool.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">📺 短剧搜索</span>
-                <a href="http://yy.dbpan.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">🍉 吃瓜网站合集</span>
-                <a href="https://pan.quark.cn/s/96d3e2a89a09" target="_blank" class="item-link">点击访问</a>
-            </div>
-            <div class="list-item">
-                <span class="item-name">📢 TG频道</span>
-                <a href="https://t.me/jbksjl" target="_blank" class="item-link">点击访问</a>
+            <div class="list-wrapper">
+                <div class="list-item">
+                    <span class="item-name">👥 粉丝群（禁广告）</span>
+                    <a href="https://pd.qq.com/s/5a6zmg4o" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">💰 副业项目群</span>
+                    <a href="https://qm.qq.com/q/pfJhtpKmAM" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">🎓 魔法学院</span>
+                    <a href="https://qm.qq.com/q/vuF9RoClB8" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">📢 TG频道</span>
+                    <a href="https://t.me/jbksjl" target="_blank" class="item-link">点击访问</a>
+                </div>
             </div>
         </div>
 
+        <!-- 第二个板块：魔法专区 -->
+        <div class="section-card">
+            <h2 class="section-title"><i>🪄</i> 魔法专区</h2>
+            <div class="meta">
+                <span>2026-02-15</span>
+                <span class="meta-tag">魔法资源</span>
+            </div>
+            <div class="list-wrapper">
+                <div class="list-item">
+                    <span class="item-name">📖 新手魔法教程</span>
+                    <a href="https://www.notion.so/30332dddefa3803289aaeb67976d7d88?source=copy_link" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">📱 免费安卓魔法软件</span>
+                    <a href="https://www.notion.so/2f032dddefa380b5a82cee05e676acdf?source=copy_link" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">✈️ 自用低价机场</span>
+                    <a href="https://www.notion.so/2f032dddefa380a39241f1c22401060c?source=copy_link" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">🍎 iOS小火箭账号及教程</span>
+                    <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fxiaoji.github.io%2F" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">🔗 万人骑永久订阅链接</span>
+                    <button class="copy-btn" onclick="copyLink(this, 'https://gist.githubusercontent.com/l406426025-cmd/bbbb3efb0bd1ed85a72b87f3bce95c49/raw/karing-nodes.txt')">点击复制</button>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">📥 代理软件下载</span>
+                    <a href="https://pan.quark.cn/s/d984f63d7176" target="_blank" class="item-link">点击访问</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三个板块：小姬资源区 -->
+        <div class="section-card">
+            <h2 class="section-title"><i>📦</i> 小姬资源区</h2>
+            <div class="meta">
+                <span>2026-02-15</span>
+                <span class="meta-tag">实用资源</span>
+            </div>
+            <div class="list-wrapper">
+                <div class="list-item">
+                    <span class="item-name">📚 网站资源库</span>
+                    <a href="https://tcnc02rqvgh6.feishu.cn/wiki/Q92HwZKpai2Y0okTZOWcSZM5nIe" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">💾 破解软件总库（迅雷）</span>
+                    <a href="https://pan.xunlei.com/s/VOdsgNa0py4apaXyR_2MMD9nA1?pwd=z6ar" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">📦 破解软件总库（夸克）</span>
+                    <a href="https://pan.quark.cn/s/3443992d78c8" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">🍉 吃瓜网站合集</span>
+                    <a href="https://pan.quark.cn/s/96d3e2a89a09" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">🎬 网盘搜剧</span>
+                    <a href="http://aa.plool.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
+                </div>
+                <div class="list-item">
+                    <span class="item-name">📺 短剧搜索</span>
+                    <a href="http://yy.dbpan.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航区 -->
         <div class="nav-section">
-            <h3 class="nav-title">🔗 国内免翻导航页</h3>
+            <h3 class="nav-title"><i>🔗</i> 国内免翻导航页</h3>
             <a href="https://link3.cc/jbksle" target="_blank" class="nav-link">点击访问</a>
         </div>
     </div>
 
+    <!-- 复制功能脚本（保留原有功能） -->
     <script>
         function copyLink(btn, link) {
             navigator.clipboard.writeText(link).then(() => {
                 const originalText = btn.textContent;
-                btn.textContent = "已复制";
+                btn.textContent = "✅ 已复制";
                 setTimeout(() => {
                     btn.textContent = originalText;
                 }, 2000);
             }).catch(err => {
                 console.error('复制失败:', err);
-                btn.textContent = "复制失败";
+                btn.textContent = "❌ 复制失败";
                 setTimeout(() => {
                     btn.textContent = "点击复制";
                 }, 2000);
