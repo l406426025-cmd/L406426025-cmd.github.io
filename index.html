@@ -136,30 +136,31 @@
             gap: 8px; /* 表情和文字间距 */
             font-size: 15px;
         }
-        /* 按钮/链接样式统一优化 */
+        /* 按钮/链接样式 - 调淡为浅紫色渐变，不再刺眼 */
         .item-link, .copy-btn {
-            color: #fff;
-            background: linear-gradient(90deg, #6f42c1, #8a6dca);
+            color: #6f42c1; /* 文字用标题同色，背景淡紫 */
+            background: linear-gradient(90deg, #f3e9ff, #e9d8fd); /* 浅紫渐变背景 */
             text-decoration: none;
             font-size: 14px;
             padding: 6px 16px;
             border-radius: 6px;
             white-space: nowrap; /* 链接不换行 */
-            border: none;
+            border: 1px solid #e1bee7; /* 浅紫边框 */
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
         }
         .item-link:hover, .copy-btn:hover {
-            background: linear-gradient(90deg, #5d35a8, #7859b8);
+            background: linear-gradient(90deg, #e9d8fd, #d1c4e9); /* hover时稍深一点 */
             transform: translateY(-1px);
+            border-color: #ce93d8;
         }
         .copy-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
         }
-        /* 底部导航区样式优化 */
+        /* 底部导航区样式 - 同步调淡按钮 */
         .nav-section {
             margin-top: 10px;
             padding: 25px 20px;
@@ -179,19 +180,21 @@
             gap: 8px;
         }
         .nav-link {
-            color: #fff;
-            background: linear-gradient(90deg, #6f42c1, #8a6dca);
+            color: #6f42c1;
+            background: linear-gradient(90deg, #f3e9ff, #e9d8fd);
             text-decoration: none;
             padding: 8px 20px;
             border-radius: 8px;
             display: inline-block; /* 适配点击区域 */
             font-weight: 500;
-            transition: all 0.3s ease;
+            border: 1px solid #e1bee7;
+            transition: all 0.3 ease;
         }
         .nav-link:hover {
-            background: linear-gradient(90deg, #5d35a8, #7859b8);
+            background: linear-gradient(90deg, #e9d8fd, #d1c4e9);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.15);
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.1);
+            border-color: #ce93d8;
         }
         /* 手机端适配 - 更友好的布局 */
         @media (max-width: 768px) {
@@ -221,11 +224,11 @@
 </head>
 <body>
     <div class="container">
-        <!-- 头部区域 -->
+        <!-- 头部区域 - 头像已替换为你指定的链接 -->
         <div class="header">
             <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="头像" class="avatar">
-            <h1 class="title">姬不可失的资源列表</h1>
-            <p class="subtitle">资源聚合·魔法分享·永久仓库 | 持续更新</p>
+            <h1 class="title">姬不可失的资源仓库</h1>
+            <p class="subtitle">资源聚合·魔法分享·永久仓库·持续更新</p>
             <div class="divider"></div>
         </div>
 
