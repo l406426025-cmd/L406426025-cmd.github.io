@@ -12,8 +12,8 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(120deg, #f9f4fc 0%, #ffffff 100%); /* 淡紫渐变背景 */
-            color: #6f42c1; /* 全局紫色系文字 */
+            background: linear-gradient(120deg, #f9f4fc 0%, #ffffff 100%);
+            color: #6f42c1;
             line-height: 1.6;
             padding: 20px 0;
         }
@@ -45,7 +45,7 @@
         }
         .subtitle {
             font-size: 16px;
-            color: #8a6dca; /* 浅紫色副标题 */
+            color: #8a6dca;
             line-height: 1.5;
         }
         .divider {
@@ -55,7 +55,6 @@
             margin: 25px auto 0;
             border-radius: 2px;
         }
-        /* 板块卡片样式 - 优化视觉层次 */
         .section-card {
             background: #fff;
             border-radius: 16px;
@@ -65,7 +64,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* 板块顶部装饰条 */
         .section-card::before {
             content: "";
             position: absolute;
@@ -78,7 +76,7 @@
         .section-title {
             font-size: 24px;
             font-weight: 600;
-            color: #6f42c1; /* 紫色标题 */
+            color: #6f42c1;
             margin-bottom: 20px;
             text-align: center;
             display: flex;
@@ -95,34 +93,33 @@
             align-items: center;
             gap: 16px;
             font-size: 14px;
-            color: #8a6dca; /* 浅紫色日期标签 */
+            color: #8a6dca;
             margin-bottom: 20px;
             justify-content: center;
-            flex-wrap: wrap; /* 手机端换行 */
+            flex-wrap: wrap;
         }
         .meta-tag {
-            background-color: #f3e9ff; /* 浅紫背景标签 */
+            background-color: #f3e9ff;
             color: #6f42c1;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 500;
         }
-        /* 列表项样式优化 */
         .list-wrapper {
             display: grid;
             gap: 12px;
         }
         .list-item {
             padding: 15px 12px;
-            background: #faf5ff; /* 淡紫背景 */
+            background: #faf5ff;
             border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* 手机端换行 */
-            gap: 10px; /* 换行后间距 */
-            transition: all 0.3 ease;
+            flex-wrap: wrap;
+            gap: 10px;
+            transition: all 0.3s ease;
         }
         .list-item:hover {
             transform: translateY(-2px);
@@ -130,28 +127,27 @@
         }
         .item-name {
             font-weight: 500;
-            color: #6f42c1; /* 左侧文字紫色 */
+            color: #6f42c1;
             display: flex;
             align-items: center;
-            gap: 8px; /* 表情和文字间距 */
+            gap: 8px;
             font-size: 15px;
         }
-        /* 按钮/链接样式 - 调淡为浅紫色渐变，不再刺眼 */
         .item-link, .copy-btn {
-            color: #6f42c1; /* 文字用标题同色，背景淡紫 */
-            background: linear-gradient(90deg, #f3e9ff, #e9d8fd); /* 浅紫渐变背景 */
+            color: #6f42c1;
+            background: linear-gradient(90deg, #f3e9ff, #e9d8fd);
             text-decoration: none;
             font-size: 14px;
             padding: 6px 16px;
             border-radius: 6px;
-            white-space: nowrap; /* 链接不换行 */
-            border: 1px solid #e1bee7; /* 浅紫边框 */
+            white-space: nowrap;
+            border: 1px solid #e1bee7;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3 ease;
+            transition: all 0.3s ease;
         }
         .item-link:hover, .copy-btn:hover {
-            background: linear-gradient(90deg, #e9d8fd, #d1c4e9); /* hover时稍深一点 */
+            background: linear-gradient(90deg, #e9d8fd, #d1c4e9);
             transform: translateY(-1px);
             border-color: #ce93d8;
         }
@@ -160,7 +156,6 @@
             align-items: center;
             justify-content: center;
         }
-        /* 底部导航区样式 - 同步调淡按钮 */
         .nav-section {
             margin-top: 10px;
             padding: 25px 20px;
@@ -172,7 +167,7 @@
         .nav-title {
             font-size: 20px;
             font-weight: 600;
-            color: #6f42c1; /* 紫色标题 */
+            color: #6f42c1;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -185,10 +180,10 @@
             text-decoration: none;
             padding: 8px 20px;
             border-radius: 8px;
-            display: inline-block; /* 适配点击区域 */
+            display: inline-block;
             font-weight: 500;
             border: 1px solid #e1bee7;
-            transition: all 0.3 ease;
+            transition: all 0.3s ease;
         }
         .nav-link:hover {
             background: linear-gradient(90deg, #e9d8fd, #d1c4e9);
@@ -196,7 +191,6 @@
             box-shadow: 0 4px 12px rgba(111, 66, 193, 0.1);
             border-color: #ce93d8;
         }
-        /* 手机端适配 - 更友好的布局 */
         @media (max-width: 768px) {
             .title {
                 font-size: 26px;
@@ -205,7 +199,7 @@
                 font-size: 22px;
             }
             .list-item {
-                flex-direction: column; /* 手机端垂直排列 */
+                flex-direction: column;
                 align-items: stretch;
             }
             .item-link, .copy-btn {
@@ -224,7 +218,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- 头部区域 -->
         <div class="header">
             <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="头像" class="avatar">
             <h1 class="title">姬不可失的资源仓库</h1>
@@ -232,7 +225,6 @@
             <div class="divider"></div>
         </div>
 
-        <!-- 第一个板块：粉丝社区 -->
         <div class="section-card">
             <h2 class="section-title"><i>👥</i> 粉丝社区</h2>
             <div class="meta">
@@ -259,7 +251,6 @@
             </div>
         </div>
 
-        <!-- 第二个板块：魔法专区 -->
         <div class="section-card">
             <h2 class="section-title"><i>🪄</i> 魔法专区</h2>
             <div class="meta">
@@ -291,10 +282,14 @@
                     <span class="item-name">📥 小姬订阅所需代理软件下载</span>
                     <a href="https://pan.quark.cn/s/d984f63d7176" target="_blank" class="item-link">点击访问</a>
                 </div>
+                <!-- 移动到最后一个：代理软件下载合集 -->
+                <div class="list-item">
+                    <span class="item-name">📲 代理软件下载合集（全平台）</span>
+                    <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fdlrjxzjbks%2F" target="_blank" class="item-link">点击访问</a>
+                </div>
             </div>
         </div>
 
-        <!-- 第三个板块：小姬资源区 -->
         <div class="section-card">
             <h2 class="section-title"><i>📦</i> 小姬资源区</h2>
             <div class="meta">
@@ -329,14 +324,12 @@
             </div>
         </div>
 
-        <!-- 底部导航区 -->
         <div class="nav-section">
             <h3 class="nav-title"><i>🔗</i> 小姬永久发布页</h3>
             <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbks-fabuye%2F" target="_blank" class="nav-link">点击访问</a>
         </div>
     </div>
 
-    <!-- 复制功能脚本（保留作为备用，如果需要可继续用） -->
     <script>
         function copyLink(btn, link) {
             navigator.clipboard.writeText(link).then(() => {
