@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>姬不可失的资源列表</title>
     <style>
+        /* 原有所有样式保持不变，下面只新增弹窗样式 */
         * {
             margin: 0;
             padding: 0;
@@ -119,7 +120,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            transition: all 0.3 ease;
+            transition: all 0.3s ease;
         }
         .list-item:hover {
             transform: translateY(-2px);
@@ -144,7 +145,7 @@
             border: 1px solid #e1bee7;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3 ease;
+            transition: all 0.3s ease;
         }
         .item-link:hover, .copy-btn:hover {
             background: linear-gradient(90deg, #e9d8fd, #d1c4e9);
@@ -183,7 +184,7 @@
             display: inline-block;
             font-weight: 500;
             border: 1px solid #e1bee7;
-            transition: all 0.3 ease;
+            transition: all 0.3s ease;
         }
         .nav-link:hover {
             background: linear-gradient(90deg, #e9d8fd, #d1c4e9);
@@ -214,127 +215,240 @@
                 padding: 25px 15px;
             }
         }
+
+        /* 新增弹窗样式 */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        .modal-content {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 92%;
+            width: 640px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px 24px;
+            box-shadow: 0 10px 40px rgba(111,66,193,0.3);
+            border: 2px solid #d1c4e9;
+            color: #4a4a68;
+        }
+        .modal-content h2 {
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .modal-content p {
+            line-height: 1.8;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+        }
+        .modal-content .strong {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-btn {
+            padding: 14px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 180px;
+        }
+        #agree {
+            background-color: #6f42c1;
+            color: white;
+        }
+        #agree:hover {
+            background-color: #5a35a8;
+            transform: translateY(-2px);
+        }
+        #disagree {
+            background-color: #ef5350;
+            color: white;
+        }
+        #disagree:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .modal-content { padding: 24px 18px; }
+            .modal-buttons { flex-direction: column; gap: 12px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="头像" class="avatar">
-            <h1 class="title">姬不可失的资源仓库</h1>
-            <p class="subtitle">资源聚合·魔法分享·永久仓库·持续更新</p>
-            <div class="divider"></div>
-        </div>
 
-        <div class="section-card">
-            <h2 class="section-title"><i>👥</i> 粉丝社区</h2>
-            <div class="meta">
-                <span>2026-02-15</span>
-                <span class="meta-tag">交流互动</span>
-            </div>
-            <div class="list-wrapper">
-                <div class="list-item">
-                    <span class="item-name">👥 粉丝群（禁广告）</span>
-                    <a href="https://pd.qq.com/s/5a6zmg4o" target="_blank" class="item-link">点击加入</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">💰 副业项目群（免费）</span>
-                    <a href="https://qm.qq.com/q/pfJhtpKmAM" target="_blank" class="item-link">点击加入</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">🎓 魔法学院（资源）</span>
-                    <a href="https://qm.qq.com/q/vuF9RoClB8" target="_blank" class="item-link">点击加入</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">📢 TG频道（资源）</span>
-                    <a href="https://t.me/jbksjl" target="_blank" class="item-link">点击加入</a>
-                </div>
+    <!-- 免责弹窗 -->
+    <div class="modal" id="disclaimerModal">
+        <div class="modal-content">
+            <h2>重要免责声明（必须阅读）</h2>
+            <p>1. 本页面所有链接及资源信息均来源于互联网公开渠道，<strong>仅供个人学习、研究、技术交流、资料查阅之用，不构成任何服务提供、推荐或指导</strong>。</p>
+            
+            <p>2. 本人<strong>不运营、不维护、不销售、不代理</strong>任何代理工具、破解软件、影视资源或相关服务，<strong>未从中获取任何经济利益</strong>，也<strong>不参与任何形式的商业推广或盈利行为</strong>。</p>
+            
+            <p>3. 中华人民共和国法律法规明确禁止未经许可提供、传播、销售翻墙工具/国际联网代理服务、破解软件、侵权影视等内容（详见《网络安全法》《计算机信息网络国际联网管理暂行规定》《著作权法》等）。本人<strong>强烈反对、坚决不鼓励、不支持</strong>任何违反中国法律法规的行为。</p>
+            
+            <p>4. 访问者必须自行判断所有链接的合法性、安全性、可用性及风险，并<strong>严格遵守所在地全部法律法规</strong>。任何因点击、访问、使用、下载本页面链接或资源而产生的法律责任、行政处罚、经济损失、账号异常、设备安全问题、个人信息泄露或其他任何后果，<strong>全部由访问者本人自行承担，与本页面及维护者完全无关</strong>。</p>
+            
+            <p>5. 本页面内容可能因法律法规要求、版权投诉或链接失效而随时删除、下架或修改，本人不保证信息的完整性、准确性、时效性或安全性，也不承担任何明示或暗示的担保责任。</p>
+            
+            <p style="margin-top: 20px; text-align: center; font-weight: bold; color: #d32f2f; font-size: 1.15rem;">
+                点击“同意并继续”即表示您已完整阅读并理解以上全部内容，并承诺不会将本页面用于任何违法、不当或侵权目的。
+            </p>
+
+            <div class="modal-buttons">
+                <button id="agree" class="modal-btn">同意并继续</button>
+                <button id="disagree" class="modal-btn">不同意，离开</button>
             </div>
         </div>
+    </div>
 
-        <div class="section-card">
-            <h2 class="section-title"><i>🪄</i> 魔法专区</h2>
-            <div class="meta">
-                <span>2026-02-15</span>
-                <span class="meta-tag">魔法资源</span>
+    <!-- 原页面内容（先隐藏） -->
+    <div id="mainContent" style="display:none;">
+        <div class="container">
+            <div class="header">
+                <img src="https://i2.qyimage.store:2999/i/bbae75fed77149fe" alt="头像" class="avatar">
+                <h1 class="title">姬不可失的资源仓库</h1>
+                <p class="subtitle">资源聚合·魔法分享·永久仓库·持续更新</p>
+                <div class="divider"></div>
             </div>
-            <div class="list-wrapper">
-                <div class="list-item">
-                    <span class="item-name">📖 新手魔法教程（打开稍慢稍等片刻）</span>
-                    <a href="https://www.notion.so/30332dddefa3803289aaeb67976d7d88?source=copy_link" target="_blank" class="item-link">点击访问</a>
+            <div class="section-card">
+                <h2 class="section-title"><i>👥</i> 粉丝社区</h2>
+                <div class="meta">
+                    <span>2026-02-15</span>
+                    <span class="meta-tag">交流互动</span>
                 </div>
-                <div class="list-item">
-                    <span class="item-name">📱 免费安卓魔法软件（打开稍慢稍等片刻）</span>
-                    <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbkslevpn1%2F" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">✈️ 自用低价机场（打开稍慢稍等片刻）</span>
-                    <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbskleddjjctja%2F" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">🍎 iOS小火箭免费账号及教程</span>
-                    <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fxiaoji.github.io%2F" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">🔗 小姬万人骑永久订阅链接</span>
-                    <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbksdyjdyfb%2F" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">📥 小姬订阅所需代理软件下载</span>
-                    <a href="https://pan.quark.cn/s/d984f63d7176" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <!-- 移动到最后一个：代理软件下载合集 -->
-                <div class="list-item">
-                    <span class="item-name">📲 代理软件下载合集（全平台）</span>
-                    <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fdlrjxzjbks%2F" target="_blank" class="item-link">点击访问</a>
+                <div class="list-wrapper">
+                    <div class="list-item">
+                        <span class="item-name">👥 粉丝群（禁广告）</span>
+                        <a href="https://pd.qq.com/s/5a6zmg4o" target="_blank" class="item-link">点击加入</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">💰 副业项目群（免费）</span>
+                        <a href="https://qm.qq.com/q/pfJhtpKmAM" target="_blank" class="item-link">点击加入</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">🎓 魔法学院（资源）</span>
+                        <a href="https://qm.qq.com/q/vuF9RoClB8" target="_blank" class="item-link">点击加入</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">📢 TG频道（资源）</span>
+                        <a href="https://t.me/jbksjl" target="_blank" class="item-link">点击加入</a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="section-card">
-            <h2 class="section-title"><i>📦</i> 小姬资源区</h2>
-            <div class="meta">
-                <span>2026-02-15</span>
-                <span class="meta-tag">实用资源</span>
+            <div class="section-card">
+                <h2 class="section-title"><i>🪄</i> 魔法专区</h2>
+                <div class="meta">
+                    <span>2026-02-15</span>
+                    <span class="meta-tag">魔法资源</span>
+                </div>
+                <div class="list-wrapper">
+                    <div class="list-item">
+                        <span class="item-name">📖 新手魔法教程（打开稍慢稍等片刻）</span>
+                        <a href="https://www.notion.so/30332dddefa3803289aaeb67976d7d88?source=copy_link" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">📱 免费安卓魔法软件（打开稍慢稍等片刻）</span>
+                        <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbkslevpn1%2F" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">✈️ 自用低价机场（打开稍慢稍等片刻）</span>
+                        <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbskleddjjctja%2F" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">🍎 iOS小火箭免费账号及教程</span>
+                        <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fxiaoji.github.io%2F" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">🔗 小姬万人骑永久订阅链接</span>
+                        <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbksdyjdyfb%2F" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">📥 小姬订阅所需代理软件下载</span>
+                        <a href="https://pan.quark.cn/s/d984f63d7176" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <!-- 移动到最后一个：代理软件下载合集 -->
+                    <div class="list-item">
+                        <span class="item-name">📲 代理软件下载合集（全平台）</span>
+                        <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fdlrjxzjbks%2F" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                </div>
             </div>
-            <div class="list-wrapper">
-                <div class="list-item">
-                    <span class="item-name">📚 网站资源库（每月更新）</span>
-                    <a href="https://tcnc02rqvgh6.feishu.cn/wiki/Q92HwZKpai2Y0okTZOWcSZM5nIe" target="_blank" class="item-link">点击访问</a>
+            <div class="section-card">
+                <h2 class="section-title"><i>📦</i> 小姬资源区</h2>
+                <div class="meta">
+                    <span>2026-02-15</span>
+                    <span class="meta-tag">实用资源</span>
                 </div>
-                <div class="list-item">
-                    <span class="item-name">💾 破解软件总库（迅雷）</span>
-                    <a href="https://pan.xunlei.com/s/VOdsgNa0py4apaXyR_2MMD9nA1?pwd=z6ar" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">📦 破解软件总库（夸克）</span>
-                    <a href="https://pan.quark.cn/s/3443992d78c8" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">🍉 吃瓜网站合集（有效）</span>
-                    <a href="https://pan.quark.cn/s/96d3e2a89a09" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">🎬 搜全网影视（网盘）</span>
-                    <a href="http://aa.plool.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
-                </div>
-                <div class="list-item">
-                    <span class="item-name">📺 搜全网短剧（网盘）</span>
-                    <a href="http://yy.dbpan.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
-                </div>
-                 <div class="list-item">
-                    <span class="item-name">💰 副业项目库（免费）</span>
-                    <a href="https://project.jbks.de5.net" target="_blank" class="item-link">点击访问</a>
+                <div class="list-wrapper">
+                    <div class="list-item">
+                        <span class="item-name">📚 网站资源库（每月更新）</span>
+                        <a href="https://tcnc02rqvgh6.feishu.cn/wiki/Q92HwZKpai2Y0okTZOWcSZM5nIe" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">💾 破解软件总库（迅雷）</span>
+                        <a href="https://pan.xunlei.com/s/VOdsgNa0py4apaXyR_2MMD9nA1?pwd=z6ar" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">📦 破解软件总库（夸克）</span>
+                        <a href="https://pan.quark.cn/s/3443992d78c8" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">🍉 吃瓜网站合集（有效）</span>
+                        <a href="https://pan.quark.cn/s/96d3e2a89a09" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">🎬 搜全网影视（网盘）</span>
+                        <a href="http://aa.plool.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-name">📺 搜全网短剧（网盘）</span>
+                        <a href="http://yy.dbpan.com/app/index.html?id=211229kl" target="_blank" class="item-link">点击访问</a>
+                    </div>
+                     <div class="list-item">
+                        <span class="item-name">💰 副业项目库（免费）</span>
+                        <a href="https://project.jbks.de5.net" target="_blank" class="item-link">点击访问</a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="nav-section">
-            <h3 class="nav-title"><i>🔗</i> 小姬永久发布页</h3>
-            <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbks-fabuye%2F" target="_blank" class="nav-link">点击访问</a>
+            <div class="nav-section">
+                <h3 class="nav-title"><i>🔗</i> 小姬永久发布页</h3>
+                <a href="https://proxy.edgeone.pp.ua/proxy?url=https%3A%2F%2Fl406426025-cmd.github.io%2Fjbks-fabuye%2F" target="_blank" class="nav-link">点击访问</a>
+            </div>
         </div>
     </div>
 
     <script>
+        // 弹窗交互
+        document.getElementById('agree').addEventListener('click', function() {
+            document.getElementById('disclaimerModal').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        });
+
+        document.getElementById('disagree').addEventListener('click', function() {
+            document.body.innerHTML = '<div style="text-align:center; margin-top:200px; color:#d32f2f; font-size:2.5rem; font-weight:bold;">已取消访问<br><br>请关闭此页面</div>';
+        });
+
+        // 原有复制功能脚本（完全不变）
         function copyLink(btn, link) {
             navigator.clipboard.writeText(link).then(() => {
                 const originalText = btn.textContent;
