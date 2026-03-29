@@ -215,7 +215,6 @@
                 padding: 25px 15px;
             }
         }
-
         /* 新增弹窗样式 */
         .modal {
             position: fixed;
@@ -287,7 +286,6 @@
             background-color: #d32f2f;
             transform: translateY(-2px);
         }
-
         @media (max-width: 600px) {
             .modal-content { padding: 24px 18px; }
             .modal-buttons { flex-direction: column; gap: 12px; }
@@ -295,32 +293,29 @@
     </style>
 </head>
 <body>
-
     <!-- 免责弹窗 -->
     <div class="modal" id="disclaimerModal">
         <div class="modal-content">
             <h2>重要免责声明（必须阅读）</h2>
             <p>1. 本页面所有链接及资源信息均来源于互联网公开渠道，<strong>仅供个人学习、研究、技术交流、资料查阅之用，不构成任何服务提供、推荐或指导</strong>。</p>
-            
+           
             <p>2. 本人<strong>不运营、不维护、不销售、不代理</strong>任何代理工具、破解软件、影视资源或相关服务，<strong>未从中获取任何经济利益</strong>，也<strong>不参与任何形式的商业推广或盈利行为</strong>。</p>
-            
+           
             <p>3. 中华人民共和国法律法规明确禁止未经许可提供、传播、销售翻墙工具/国际联网代理服务、破解软件、侵权影视等内容（详见《网络安全法》《计算机信息网络国际联网管理暂行规定》《著作权法》等）。本人<strong>强烈反对、坚决不鼓励、不支持</strong>任何违反中国法律法规的行为。</p>
-            
+           
             <p>4. 访问者必须自行判断所有链接的合法性、安全性、可用性及风险，并<strong>严格遵守所在地全部法律法规</strong>。任何因点击、访问、使用、下载本页面链接或资源而产生的法律责任、行政处罚、经济损失、账号异常、设备安全问题、个人信息泄露或其他任何后果，<strong>全部由访问者本人自行承担，与本页面及维护者完全无关</strong>。</p>
-            
+           
             <p>5. 本页面内容可能因法律法规要求、版权投诉或链接失效而随时删除、下架或修改，本人不保证信息的完整性、准确性、时效性或安全性，也不承担任何明示或暗示的担保责任。</p>
-            
+           
             <p style="margin-top: 20px; text-align: center; font-weight: bold; color: #d32f2f; font-size: 1.15rem;">
                 点击“同意并继续”即表示您已完整阅读并理解以上全部内容，并承诺不会将本页面用于任何违法、不当或侵权目的。
             </p>
-
             <div class="modal-buttons">
                 <button id="agree" class="modal-btn">同意并继续</button>
                 <button id="disagree" class="modal-btn">不同意，离开</button>
             </div>
         </div>
     </div>
-
     <!-- 原页面内容（先隐藏） -->
     <div id="mainContent" style="display:none;">
         <div class="container">
@@ -333,7 +328,6 @@
             <div class="section-card">
                 <h2 class="section-title"><i>👥</i> 粉丝社区</h2>
                 <div class="meta">
-                    <span>2026-03-29</span>
                     <span class="meta-tag">交流互动</span>
                 </div>
                 <div class="list-wrapper">
@@ -358,7 +352,6 @@
             <div class="section-card">
                 <h2 class="section-title"><i>🪄</i> 魔法专区</h2>
                 <div class="meta">
-                    <span>2026-02-15</span>
                     <span class="meta-tag">魔法资源</span>
                 </div>
                 <div class="list-wrapper">
@@ -400,7 +393,6 @@
             <div class="section-card">
                 <h2 class="section-title"><i>📦</i> 小姬资源区</h2>
                 <div class="meta">
-                    <span>2026-02-15</span>
                     <span class="meta-tag">实用资源</span>
                 </div>
                 <div class="list-wrapper">
@@ -414,7 +406,7 @@
                     </div>
                     <div class="list-item">
                         <span class="item-name">📦 破解软件总库（夸克）</span>
-                        <a href="https://pan.quark.cn/s/3443992d78c8" target="_blank" class="item-link">点击访问</a>
+                        <a href="https://my.feishu.cn/wiki/RtCmwUc6qiwbZbkL4ROc2HKknbf" target="_blank" class="item-link">点击访问</a>
                     </div>
                     <div class="list-item">
                         <span class="item-name">🍉 吃瓜网站合集（有效）</span>
@@ -440,18 +432,15 @@
             </div>
         </div>
     </div>
-
     <script>
         // 弹窗交互
         document.getElementById('agree').addEventListener('click', function() {
             document.getElementById('disclaimerModal').style.display = 'none';
             document.getElementById('mainContent').style.display = 'block';
         });
-
         document.getElementById('disagree').addEventListener('click', function() {
             document.body.innerHTML = '<div style="text-align:center; margin-top:200px; color:#d32f2f; font-size:2.5rem; font-weight:bold;">已取消访问<br><br>请关闭此页面</div>';
         });
-
         // 原有复制功能脚本（完全不变）
         function copyLink(btn, link) {
             navigator.clipboard.writeText(link).then(() => {
